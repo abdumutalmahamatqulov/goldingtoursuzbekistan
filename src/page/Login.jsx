@@ -4,21 +4,37 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import BACK_END_URL from "./comman";
+import axios from "axios";
 
 function Login() {
-    const [phone, setPhone] = useState("");
+    const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-
-        if (phone === "998991234567" && password === "password123"|| true) {
-            toast.success("Kirish muvaffaqiyatli!");
-            navigate("/");
-        } else {
-            toast.error("Telefon raqami yoki parol noto'g'ri!");
+    
+        try {
+            const response = await axios.post(`${BACK_END_URL}/auth/login`, {
+                login,
+                password
+            });
+    
+            console.log("Token:=>", response.data.access_token);
+            if (response.data.access_token) {
+                toast.success("Kirish muvaffaqiyatli!");
+                // agar token kelgan bo‘lsa, localStorage'ga saqlang:
+                localStorage.setItem("token", response.data.access_token);
+                
+                navigate("/");
+            } else {
+                toast.error("Login muvaffaqiyatsiz!");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.");
         }
     };
 
@@ -27,17 +43,17 @@ function Login() {
             <ToastContainer position="top-right" theme="colored" />
 
             <div style={{ backgroundColor: "white", boxShadow: "0 4px 8px rgba(0,0,0,0.1)", borderRadius: "8px", padding: "32px", width: "100%", maxWidth: "400px" }}>
-                <Form onSubmit={handleLogin}>
+                <Form onSubmitCapture={handleLogin}>
                     <div style={{ marginBottom: "20px" }}>
                         <label style={{ display: "block", fontSize: "14px", fontWeight: "500", color: "#595959" }}>
-                            Telefon raqami
+                            Email
                         </label>
                         <Input
-                            type="tel"
+                            type={"email"}
                             style={{ width: "100%" }}
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            placeholder="99 999 99 99"
+                            value={login}
+                            onChange={(e) => setLogin(e.target.value)}
+                            placeholder="login@gmail.com"
                             required
                         />
                     </div>
@@ -56,7 +72,7 @@ function Login() {
                                 required
                             />
                             <button
-                                type="button"
+                                type="submit"
                                 style={{ position: "absolute", right: "10px", top: "8px", background: "transparent", border: "none" }}
                                 onClick={() => setShowPassword(!showPassword)}
                             >
