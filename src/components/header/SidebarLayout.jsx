@@ -16,10 +16,19 @@ const { Sider, Header, Content } = Layout;
 
 const menuItems = [
     { path: "/statistika", icon: <BarChartOutlined style={{ fontSize: 20 }} />, label: "Statistika" },
-    { path: "/ombor", icon: <ShopOutlined style={{ fontSize: 20 }} />, label: "Ombor" },
-    { path: "/magazinlar", icon: <UserOutlined style={{ fontSize: 20 }} />, label: "Magazinlar" },
-    { path: "/hodimlar", icon: <TeamOutlined style={{ fontSize: 20 }} />, label: "Hodimlar" },
-    { path: "/tayormaxsulotlar", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Tayor mahsulotlar" },
+    { path: "/contact", icon: <ShopOutlined style={{ fontSize: 20 }} />, label: "Contact" },
+    { path: "/trips", icon: <UserOutlined style={{ fontSize: 20 }} />, label: "Trips" },
+    { path: "/operators", icon: <TeamOutlined style={{ fontSize: 20 }} />, label: "Operators" },
+    { path: "/review", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Reviews" },
+    { path: "/traveldesigners", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Travel Designers" },
+    { path: "/articles", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Articles" },
+    { path: "/subarticles", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Subarticles" },
+    { path: "/traveltypes", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Travel Types" },
+    { path: "/travel", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Travel" },
+    { path: "/levels", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Levels" },
+    { path: "/attractions", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Attractions" },
+    { path: "/services", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Services" },
+    { path: "/days", icon: <InboxOutlined style={{ fontSize: 20 }} />, label: "Days" },
 ];
 
 const SidebarLayout = () => {
