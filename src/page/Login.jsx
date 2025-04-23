@@ -24,7 +24,6 @@ function Login() {
     
             if (response.data.access_token) {
                 toast.success("Kirish muvaffaqiyatli!");
-                // agar token kelgan bo‘lsa, localStorage'ga saqlang:
                 localStorage.setItem("token", response.data.access_token);
                 
                 navigate("/");
