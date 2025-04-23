@@ -22,7 +22,6 @@ function Login() {
                 password
             });
     
-            console.log("Token:=>", response.data.access_token);
             if (response.data.access_token) {
                 toast.success("Kirish muvaffaqiyatli!");
                 // agar token kelgan bo‘lsa, localStorage'ga saqlang:
