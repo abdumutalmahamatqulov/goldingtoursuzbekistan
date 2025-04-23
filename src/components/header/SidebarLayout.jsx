@@ -11,7 +11,6 @@ import {
     InboxOutlined,
 } from "@ant-design/icons";
 import React, { useState, useEffect } from "react";
-import logo from '/Frontend/nashsad/src/assets/image.png'
 
 const { Sider, Header, Content } = Layout;
 
